@@ -1,0 +1,414 @@
+<!--
+// ==============================================================================================================
+// The base Interactive Story Source Code
+// (As used on The Orange Cat in Grade School Hijinx: Black Cat Group Bullies - An Interactive Story)
+//
+// Original source code created by JohnChaCoder
+// With help and thanks to mariflo35 and KrystalV8
+//
+// Created and edited using Visual Studio Code. © Microsoft Corporation. All rights reserved.
+// ==============================================================================================================
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- This is a favicon -->
+    <link rel="icon"
+    type="image/png"
+    href="images/favicon.png">
+    <!-- This is for the web styling of the look and feel on the website-->
+    <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <!-- This is an external font for the Ubuntu Typeface -->
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- This is the title that shows on the browser -->
+    <title>The Interactive Story Sample Page</title>
+</head>
+<body>
+
+    <!-- This is the title for the interactive story -->
+    <h1 class="Title">The Interactive Story Sample Page</h1>
+    <p></p>
+    <!-- This is the image for the interactive story -->
+    <img class="imgsize" src="images/sample.png" alt="Image">
+    <p></p>
+    <!-- This is the intro text before our main story -->
+    <p class="intro">Your intro goes here.</p>
+
+    <!-- The following displays each part of the story in these tags that are stored in the array -->
+	
+	<!-- This displays our story -->
+    <div id="story" class="story">
+
+    </div>
+    <p></p>
+	<!-- This displays our buttons in a given story -->
+    <div id="buttons" class="buttons">
+
+    </div>
+
+    <!-- Everything from here on out is JavaScript code -->
+    <script>
+    
+        // Our parts of the story in an array
+        let storyContain = document.getElementById("story");
+
+        // Our story context
+        //storyContain.innerHTML = ""
+
+        // Our buttons from the array
+        let btnContain = document.getElementById("buttons");
+
+        // Start on the intro
+        let pagehist = ["intro"];
+
+// ============================================================================
+// The "story" object, which stores each different parts of the story
+//
+// text - Our information that is being displayed on our page
+// choices - The button choices that goes into each part of the story
+// ============================================================================
+        const story = {
+			// The beginning of our story
+            intro : {
+                text : "This right here is the intro selection thingery",
+                choices : [
+                    ["one", "option1"],
+                    ["two", "option2"],
+                    ["three", "option3"],
+                    ["four", "option4"],
+                    ["five", "option5"],
+                    ["six", "option6"],
+                    ["seven", "option7"],
+                    ["eight", "option8"]
+                ]
+            },
+            option1 : {
+                text : "This right here is the option 1 thingery",
+                choices : [
+                    ["one", "option1"],
+                    ["two", "option2"],
+                    ["three", "option3"],
+                    ["four", "option4"],
+                    ["five", "option5"],
+                    ["six", "option6"],
+                    ["seven", "option7"],
+                    ["eight", "option8"]
+                ]
+            },
+            option2 : {
+                text : "This right here is the option 2 thingery",
+                choices : [
+                    ["one", "option1"],
+                    ["two", "option2"],
+                    ["three", "option3"],
+                    ["four", "option4"],
+                    ["five", "option5"],
+                    ["six", "option6"],
+                    ["seven", "option7"],
+                    ["eight", "option8"]
+                ]
+            },
+            option3 : {
+                text : "This right here is the option 3 thingery",
+                choices : [
+                    ["one", "option1"],
+                    ["two", "option2"],
+                    ["three", "option3"],
+                    ["four", "option4"],
+                    ["five", "option5"],
+                    ["six", "option6"],
+                    ["seven", "option7"],
+                    ["eight", "option8"]
+                ]
+            },
+            option4 : {
+                text : "This right here is the option 4 thingery",
+                choices : [
+                    ["one", "option1"],
+                    ["two", "option2"],
+                    ["three", "option3"],
+                    ["four", "option4"],
+                    ["five", "option5"],
+                    ["six", "option6"],
+                    ["seven", "option7"],
+                    ["eight", "option8"]
+                ]
+            },
+            option5 : {
+                text : "This right here is the option 5 thingery",
+                choices : [
+                    ["one", "option1"],
+                    ["two", "option2"],
+                    ["three", "option3"],
+                    ["four", "option4"],
+                    ["five", "option5"],
+                    ["six", "option6"],
+                    ["seven", "option7"],
+                    ["eight", "option8"]
+                ]
+            },
+            option6 : {
+                text : "This right here is the option 6 thingery",
+                choices : [
+                    ["one", "option1"],
+                    ["two", "option2"],
+                    ["three", "option3"],
+                    ["four", "option4"],
+                    ["five", "option5"],
+                    ["six", "option6"],
+                    ["seven", "option7"],
+                    ["eight", "option8"]
+                ]
+            },
+            option7 : {
+                text : "This right here is the option 7 thingery",
+                choices : [
+                    ["one", "option1"],
+                    ["two", "option2"],
+                    ["three", "option3"],
+                    ["four", "option4"],
+                    ["five", "option5"],
+                    ["six", "option6"],
+                    ["seven", "option7"],
+                    ["eight", "option8"]
+                ]
+            },
+            option8 : {
+                text : "This right here is the option 8 thingery",
+                choices : [
+                    ["one", "option1"],
+                    ["two", "option2"],
+                    ["three", "option3"],
+                    ["four", "option4"],
+                    ["five", "option5"],
+                    ["six", "option6"],
+                    ["seven", "option7"],
+                    ["eight", "option8"]
+                ]
+            },
+            option9 : {
+                text : "This right here is the option 1 thingery",
+                choices : [
+                    ["null", "null"]
+                ]
+            },
+            option10 : {
+                text : "This right here is the option 1 thingery",
+                choices : [
+                    ["null", "null"]
+                ]
+            },
+            option11 : {
+                text : "This right here is the option 1 thingery",
+                choices : [
+                    ["null", "null"]
+                ]
+            },
+            option12 : {
+                text : "This right here is the option 1 thingery",
+                choices : [
+                    ["null", "null"]
+                ]
+            },
+            option13 : {
+                text : "This right here is the option 1 thingery",
+                choices : [
+                    ["null", "null"]
+                ]
+            },
+            option14 : {
+                text : "This right here is the option 1 thingery",
+                choices : [
+                    ["null", "null"]
+                ]
+            },
+            option15 : {
+                text : "This right here is the option 1 thingery",
+                choices : [
+                    ["null", "null"]
+                ]
+            },
+            option16 : {
+                text : "This right here is the option 1 thingery",
+                choices : [
+                    ["null", "null"]
+                ]
+            },
+            option17 : {
+                text : "This right here is the option 1 thingery",
+                choices : [
+                    ["null", "null"]
+                ]
+            },
+            option18 : {
+                text : "This right here is the option 1 thingery",
+                choices : [
+                    ["null", "null"]
+                ]
+            },
+            option19 : {
+                text : "This right here is the option 1 thingery",
+                choices : [
+                    ["null", "null"]
+                ]
+            },
+            option20 : {
+                text : "This right here is the option 1 thingery",
+                choices : [
+                    ["null", "null"]
+                ]
+            },
+            option21 : {
+                text : "This right here is the option 1 thingery",
+                choices : [
+                    ["null", "null"]
+                ]
+            },
+            option22 : {
+                text : "This right here is the option 1 thingery",
+                choices : [
+                    ["null", "null"]
+                ]
+            },
+            option23 : {
+                text : "This right here is the option 1 thingery",
+                choices : [
+                    ["null", "null"]
+                ]
+            },
+            option24 : {
+                text : "This right here is the option 1 thingery",
+                choices : [
+                    ["null", "null"]
+                ]
+            },
+			// The final part of the story and a conclusion. (Ending 1)
+            finalPageTrue : {
+                text : "This right here is the Ending 1 thingery\n\nTHE END\n\nThis is the end of the story\nPlease refresh the page to play again",
+                choices : []
+            },
+			// The final part of the story and a conclusion. (Ending 2)
+            finalPageAlt1 : {
+                text : "This right here is the Ending 2 thingery\n\nTHE END\n\nThis is the end of the story\nPlease refresh the page to play again",
+                choices : []
+            },
+			// The final part of the story and a conclusion. (Ending 3)
+            finalPageAlt2 : {
+                text : "This right here is the Ending 3 thingery\n\nTHE END\n\nThis is the end of the story\nPlease refresh the page to play again",
+                choices : []
+            },
+            // A null command. Does nothing, basically.
+            null : {
+                text : "null",
+                choices : []
+            },
+			// Message indicating that the section is not done and informs the user to wait until the next release (***ONLY USE FOR TESTING PURPOSES ONLY***)
+			notdone : {
+				text : "Sorry, but this part has not been done yet!\nWait for the next release to come!",
+				choices : []
+				
+			}
+        }
+
+// ============================================================================
+// Subroutine that creates a button from the array of choices
+// 
+// btnText - Shows the text on the button that was created
+// choice - The choices shown that are different in each part of the story
+// ============================================================================
+        function createBtn(btnText, choice) {
+            // create a button
+            let button = document.createElement
+            ("button");
+
+            // Get the text from the array
+            button.innerHTML = btnText
+
+            // append to HTML elements
+            btnContain.appendChild(button);
+
+            // Outputs the choice you have made after clicking the button
+            button.addEventListener ("click", function () {
+                pagehist.push(choice);
+                outputStory();	// adds the next arc of the story from the bottom
+            });
+        }
+
+        // function to show a story
+        function showStory(text) {
+            let storyItem = document.createElement
+            ("p");  // paragraph tag
+
+            // stores the text from the array
+            storyItem.innerText = text
+
+            // append to HTML elements
+            storyContain.appendChild(storyItem);
+        }
+
+        // function to output the story into the HTML page
+        function outputStory() {
+
+            // sets the current page to the last index of the array.
+            let currentpage = pagehist[pagehist.length - 1];
+
+            // reset the story HTML and buttons
+            storyContain.innerHTML  = "";
+            btnContain.innerHTML    = "";
+            
+            // builds the story text from the array
+            for (let page of pagehist) {
+                showStory(story[page].text);
+            }
+
+            // builds the buttons for the story in the array
+            for (let choice of story[currentpage].choices) {
+                createBtn(choice[0], choice[1])
+            }
+        }
+        
+        // Shows the current story
+        outputStory();
+
+    </script>
+
+    <p></p>
+    <button onclick="about()">About this site</button>
+    <!--
+    <button onclick="characters()">About the characters</button>
+    -->
+
+    <a href="charabout.html"><button>About the characters</button></a>
+
+    <!-- JavaScript code ahead -->
+    <script>
+    
+    // Shows the info of the site
+    function about() {
+        alert("The Interactive Story Sample Page\n\nSource code originally created by GitHub users JohnChaCoder, marflo35, and KrystalV8.\n© 2019-2020. All rights reserved.\n\nCreated and edited using Visual Studio Code.\n© Microsoft Corporation. All rights reserved.")
+    }
+
+    // Shows the info about the characters
+    function characters() {
+        alert("Input information on characters here")
+    }
+
+    </script>
+
+    <p></p>
+    <!--
+    <h5 class="copyright">Site version vX.X.X<br>© 2019-2021. All rights reserved.<br>Some of the features of this site may not work in all versions of Internet Explorer.</h5>
+    -->
+    <h5 class="copyright">Site version vX.X.X<br>© 2019-2021. All rights reserved.<br>The interactive story may not work in all versions of Internet Explorer or other older browsers.</h5>
+    <!--
+    <br><br>
+    <details class="copyright">
+        <summary><b>Show Incompatibility Info</b></summary>
+        <p class="copyright"><b>The interactive story may not work in all versions of Internet Explorer or other older browsers.</b></p>
+    </details>
+    -->
+</body>
+</html>
